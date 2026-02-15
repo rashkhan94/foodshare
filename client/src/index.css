@@ -424,9 +424,36 @@ textarea.input {
   background: rgba(16, 185, 129, 0.1);
 }
 
+.nav-links a.active {
+  color: var(--primary);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* Default Desktop Styles */
 .mobile-menu {
   display: none;
 }
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.desktop-only {
+  display: block;
+}
+
+/* Notification Bell */
 
 /* Hidden by default on desktop */
 
@@ -1307,7 +1334,7 @@ textarea.input {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero h1 {
     font-size: 2.5rem;
   }
@@ -1367,7 +1394,7 @@ textarea.input {
   }
 
   .nav-links-desktop {
-    display: none;
+    display: none !important;
   }
 
   .desktop-only {
@@ -1412,20 +1439,7 @@ textarea.input {
   }
 }
 
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.nav-links-desktop {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+/* Moved to top */
 
 /* Fade-in animation */
 .fade-in {
