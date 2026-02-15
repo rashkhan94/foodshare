@@ -81,7 +81,7 @@ export default function Profile() {
                                     </div>
                                     <span style={{ color: 'var(--accent)' }}>{'⭐'.repeat(r.rating)}</span>
                                 </div>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{r.comment}</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', wordWrap: 'break-word', overflowWrap: 'anywhere' }}>{r.comment}</p>
                                 {r.listing && <Link to={`/listing/${r.listing._id}`} className="text-sm">Re: {r.listing.title}</Link>}
                             </div>
                         ))}

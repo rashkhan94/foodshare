@@ -125,9 +125,27 @@ export default function Navbar() {
                         </>
                     ) : (
                         <>
-                            <Link to="/feed">Explore</Link>
-                            <Link to="/login" className="btn btn-ghost btn-sm">Login</Link>
-                            <Link to="/register" className="btn btn-primary btn-sm">Get Started</Link>
+                            <div className="nav-links-desktop">
+                                <Link to="/feed">Explore</Link>
+                                <Link to="/login" className="btn btn-ghost btn-sm">Login</Link>
+                                <Link to="/register" className="btn btn-primary btn-sm">Get Started</Link>
+                            </div>
+
+                            <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? '✕' : '☰'}
+                            </button>
+
+                            <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+                                <Link to="/feed" onClick={() => setIsMenuOpen(false)}>🔍 Explore</Link>
+                                <Link to="/login" onClick={() => setIsMenuOpen(false)}>🔑 Login</Link>
+                                <Link to="/register" onClick={() => setIsMenuOpen(false)}>🚀 Get Started</Link>
+                                <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <span>Theme</span>
+                                    <button className="theme-toggle" onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
+                                        {theme === 'dark' ? '☀️' : '🌙'}
+                                    </button>
+                                </div>
+                            </div>
                         </>
                     )}
 
