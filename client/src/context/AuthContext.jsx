@@ -4,7 +4,8 @@ const AuthContext = createContext(null);
 
 export const useAuth = () => useContext(AuthContext);
 
-const API = 'http://localhost:5000/api';
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:5000';
+const API = `${SERVER_URL}/api`;
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
@@ -12,6 +13,7 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        console.log('🔌 Connecting to API:', API);
         if (token) {
             fetch(`${API}/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
                 .then(r => r.ok ? r.json() : Promise.reject())
