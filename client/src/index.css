@@ -1418,7 +1418,9 @@ textarea.input {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--bg-card);
+    background-color: var(--bg-card) !important;
+    /* Force solid color */
+    background: var(--bg-card) !important;
     /* Stronger background assurance */
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
     z-index: 999;
@@ -1442,6 +1444,16 @@ textarea.input {
     border-bottom: 1px solid var(--border);
     display: block;
     /* Ensure full width clickability */
+  }
+
+  .card {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero h1 {
+    font-size: 3rem;
   }
 }
 
