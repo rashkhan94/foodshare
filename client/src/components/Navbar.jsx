@@ -95,6 +95,9 @@ export default function Navbar() {
                                 </div>
                             </Link>
 
+                            {/* Desktop Logout (Hidden on Mobile) */}
+                            <button className="btn-ghost btn-sm desktop-only" onClick={() => { logout(); navigate('/'); }} style={{ cursor: 'pointer' }}>Logout</button>
+
                             {/* Mobile Hamburger */}
                             <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                                 {isMenuOpen ? '✕' : '☰'}

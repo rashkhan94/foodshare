@@ -424,6 +424,12 @@ textarea.input {
   background: rgba(16, 185, 129, 0.1);
 }
 
+.mobile-menu {
+  display: none;
+}
+
+/* Hidden by default on desktop */
+
 /* Notification Bell */
 .notif-bell {
   position: relative;
@@ -1364,6 +1370,10 @@ textarea.input {
     display: none;
   }
 
+  .desktop-only {
+    display: none !important;
+  }
+
   .container {
     padding: 0 16px;
   }
@@ -1374,6 +1384,8 @@ textarea.input {
   }
 
   .mobile-menu {
+    /* Position fixed logic was already here, just ensuring it overrides display: none */
+    display: flex;
     position: fixed;
     top: var(--nav-height);
     left: 0;
@@ -1382,7 +1394,6 @@ textarea.input {
     background: var(--bg);
     z-index: 999;
     padding: 24px;
-    display: flex;
     flex-direction: column;
     gap: 24px;
     transform: translateX(100%);
