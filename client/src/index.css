@@ -1418,7 +1418,9 @@ textarea.input {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--bg);
+    background: var(--bg-card);
+    /* Stronger background assurance */
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
     z-index: 999;
     padding: 24px;
     flex-direction: column;
@@ -1434,8 +1436,12 @@ textarea.input {
   .mobile-menu a {
     font-size: 1.25rem;
     font-weight: 700;
+    color: var(--text);
+    /* Explicit text color */
     padding: 12px;
     border-bottom: 1px solid var(--border);
+    display: block;
+    /* Ensure full width clickability */
   }
 }
 
