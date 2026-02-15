@@ -1013,7 +1013,9 @@ textarea.input {
   align-items: center;
   justify-content: center;
   background: var(--bg-secondary);
-  padding: 20px;
+  padding: 24px;
+  padding-top: 100px;
+  /* Prevent navbar overlap */
 }
 
 .auth-card {
@@ -1521,6 +1523,7 @@ textarea.input {
   font-size: 1.5rem;
   font-weight: 800;
 }
+
 .page {
   padding-top: 100px;
   min-height: 100vh;
