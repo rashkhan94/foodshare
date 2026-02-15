@@ -111,6 +111,7 @@ export default function Navbar() {
                                 )}
                                 <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>📊 Dashboard</Link>
                                 <Link to="/chat" onClick={() => setIsMenuOpen(false)}>💬 Chat</Link>
+                                <Link to={`/profile/${user._id}`} onClick={() => setIsMenuOpen(false)}>👤 Profile</Link>
                                 <button className="btn btn-ghost" onClick={() => { logout(); navigate('/'); setIsMenuOpen(false); }} style={{ justifyContent: 'flex-start', color: 'var(--danger)' }}>
                                     🚪 Logout
                                 </button>
@@ -130,8 +131,8 @@ export default function Navbar() {
                         </>
                     )}
 
-                    {/* Desktop Theme Toggle (Hidden in Mobile Menu) */}
-                    <button className="theme-toggle" style={{ display: isMenuOpen ? 'none' : 'flex' }} onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
+                    {/* Desktop Theme Toggle (Hidden on Mobile) */}
+                    <button className="theme-toggle desktop-only" style={{ display: isMenuOpen ? 'none' : 'flex' }} onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
                         {theme === 'dark' ? '☀️' : '🌙'}
                     </button>
                 </div>
