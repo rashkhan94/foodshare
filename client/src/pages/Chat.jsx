@@ -109,7 +109,7 @@ export default function Chat() {
                 {activeChat ? (
                     <>
                         <div className="chat-header">
-                            <button className="btn-icon btn-ghost" onClick={() => setActiveChat(null)} style={{ marginRight: 8, display: 'none' }} className="mobile-only-back">
+                            <button className="btn-icon btn-ghost mobile-only-back" onClick={() => setActiveChat(null)} style={{ marginRight: 8, display: 'none' }}>
                                 ⬅️
                             </button>
                             <div className="avatar" style={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, var(--primary), var(--accent))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
