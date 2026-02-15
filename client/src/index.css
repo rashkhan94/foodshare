@@ -1422,12 +1422,11 @@ textarea.input {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ffffff !important;
-    background: #ffffff !important;
-    /* Hardcoded White for Light Mode */
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
+    background-color: #000000 !important;
+    background: #000000 !important;
+    /* USER REQUEST: Solid Black in Light Mode */
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
     z-index: 99999 !important;
-    /* Maximum Elevation */
     padding: 24px;
     flex-direction: column;
     gap: 24px;
@@ -1436,9 +1435,9 @@ textarea.input {
   }
 
   [data-theme="dark"] .mobile-menu {
-    background-color: #0F172A !important;
-    background: #0F172A !important;
-    /* Hardcoded Dark for Dark Mode */
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    /* USER REQUEST: Light Background in Dark Mode */
   }
 
   .mobile-menu.open {
@@ -1448,12 +1447,17 @@ textarea.input {
   .mobile-menu a {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text);
-    /* Explicit text color */
+    color: #ffffff !important;
+    /* White text on Black bg */
     padding: 12px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     display: block;
-    /* Ensure full width clickability */
+  }
+
+  [data-theme="dark"] .mobile-menu a {
+    color: #000000 !important;
+    /* Black text on White bg */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .card {
