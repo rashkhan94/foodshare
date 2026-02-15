@@ -526,6 +526,8 @@ textarea.input {
   background: linear-gradient(135deg, #0F172A 0%, #1a3a2a 50%, #0F172A 100%);
   position: relative;
   overflow: hidden;
+  padding-top: 80px;
+  /* Prevent navbar overlap */
 }
 
 .hero::before {
