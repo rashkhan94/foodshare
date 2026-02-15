@@ -1423,11 +1423,8 @@ textarea.input {
     right: 0;
     bottom: 0;
     background-color: var(--bg-card) !important;
-    /* Basic fallback */
-    background: rgba(255, 255, 255, 0.95) !important;
-    /* Glassmorphism Light */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--bg-card) !important;
+    /* Solid background - No transparency */
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
     z-index: 999;
     padding: 24px;
