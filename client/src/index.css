@@ -1422,16 +1422,23 @@ textarea.input {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--bg-card) !important;
-    background: var(--bg-card) !important;
-    /* Solid background - No transparency */
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
-    z-index: 999;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    /* Hardcoded White for Light Mode */
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
+    z-index: 99999 !important;
+    /* Maximum Elevation */
     padding: 24px;
     flex-direction: column;
     gap: 24px;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+  }
+
+  [data-theme="dark"] .mobile-menu {
+    background-color: #0F172A !important;
+    background: #0F172A !important;
+    /* Hardcoded Dark for Dark Mode */
   }
 
   .mobile-menu.open {
