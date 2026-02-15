@@ -1521,3 +1521,7 @@ textarea.input {
   font-size: 1.5rem;
   font-weight: 800;
 }
+.page {
+  padding-top: 100px;
+  min-height: 100vh;
+}
