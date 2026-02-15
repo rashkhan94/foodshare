@@ -83,7 +83,7 @@ export default function Chat() {
     if (loading) return <div className="page"><div className="loader"><div className="spinner"></div></div></div>;
 
     return (
-        <div className="chat-layout" style={{ paddingTop: 'var(--nav-height)' }}>
+        <div className="chat-layout" style={{ paddingTop: '100px' }}>
             {/* Sidebar: Hidden on mobile when chat is active */}
             <div className={`chat-sidebar ${activeChat ? 'hidden' : ''}`}>
                 <div className="chat-sidebar-header">💬 Messages</div>

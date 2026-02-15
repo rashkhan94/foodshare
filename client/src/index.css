@@ -526,8 +526,8 @@ textarea.input {
   background: linear-gradient(135deg, #0F172A 0%, #1a3a2a 50%, #0F172A 100%);
   position: relative;
   overflow: hidden;
-  padding-top: 80px;
-  /* Prevent navbar overlap */
+  padding-top: 100px;
+  /* Consistent spacing */
 }
 
 .hero::before {
@@ -1423,10 +1423,12 @@ textarea.input {
     right: 0;
     bottom: 0;
     background-color: var(--bg-card) !important;
-    /* Force solid color */
-    background: var(--bg-card) !important;
-    /* Stronger background assurance */
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+    /* Basic fallback */
+    background: rgba(255, 255, 255, 0.95) !important;
+    /* Glassmorphism Light */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
     z-index: 999;
     padding: 24px;
     flex-direction: column;
