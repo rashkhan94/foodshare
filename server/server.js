@@ -53,6 +53,17 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Temporary Seed Endpoint
+app.get('/api/seed-db', async (req, res) => {
+    try {
+        const seed = require('./seeds/seed');
+        await seed();
+        res.send('✅ Database seeded successfully! You can now login with demo accounts.');
+    } catch (error) {
+        res.status(500).send('❌ Error: ' + error.message);
+    }
+});
+
 // Socket handlers
 require('./socket')(io);
 

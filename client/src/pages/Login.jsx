@@ -41,12 +41,19 @@ export default function Login() {
                 <p style={{ textAlign: 'center', marginTop: 24, color: 'var(--text-secondary)' }}>
                     Don't have an account? <Link to="/register" style={{ fontWeight: 600 }}>Sign up free</Link>
                 </p>
-                <div style={{ marginTop: 24, padding: 16, background: 'var(--bg-secondary)', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    <strong>Demo accounts:</strong><br />
-                    Donor: sarah@foodshare.com<br />
-                    Buyer: mike@foodshare.com<br />
-                    Admin: admin@foodshare.com<br />
-                    Password: password123
+                <div style={{ marginTop: 24, padding: 16, background: 'var(--bg-secondary)', borderRadius: 'var(--radius-sm)', fontSize: '0.85rem' }}>
+                    <strong style={{ display: 'block', marginBottom: 8 }}>👇 Tap to Fill Demo Account:</strong>
+                    <div style={{ display: 'grid', gap: 8 }}>
+                        <button type="button" className="btn btn-ghost btn-sm" style={{ justifyContent: 'flex-start', width: '100%', padding: '4px 8px' }} onClick={() => { setEmail('sarah@foodshare.com'); setPassword('password123'); }}>
+                            🍳 <strong>Donor</strong>: sarah@foodshare.com
+                        </button>
+                        <button type="button" className="btn btn-ghost btn-sm" style={{ justifyContent: 'flex-start', width: '100%', padding: '4px 8px' }} onClick={() => { setEmail('mike@foodshare.com'); setPassword('password123'); }}>
+                            🛒 <strong>Buyer</strong>: mike@foodshare.com
+                        </button>
+                        <button type="button" className="btn btn-ghost btn-sm" style={{ justifyContent: 'flex-start', width: '100%', padding: '4px 8px' }} onClick={() => { setEmail('admin@foodshare.com'); setPassword('password123'); }}>
+                            ⚙️ <strong>Admin</strong>: admin@foodshare.com
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
