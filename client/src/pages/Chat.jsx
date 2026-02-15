@@ -84,7 +84,8 @@ export default function Chat() {
 
     return (
         <div className="chat-layout" style={{ paddingTop: 'var(--nav-height)' }}>
-            <div className="chat-sidebar">
+            {/* Sidebar: Hidden on mobile when chat is active */}
+            <div className={`chat-sidebar ${activeChat ? 'hidden' : ''}`}>
                 <div className="chat-sidebar-header">💬 Messages</div>
                 {chats.length === 0 ? (
                     <div style={{ padding: 24, textAlign: 'center', color: 'var(--text-muted)' }}>No conversations yet</div>
@@ -103,10 +104,14 @@ export default function Chat() {
                 })}
             </div>
 
-            <div className="chat-main">
+            {/* Main Chat: Hidden on mobile when no chat is active */}
+            <div className={`chat-main ${!activeChat ? 'hidden' : ''}`}>
                 {activeChat ? (
                     <>
                         <div className="chat-header">
+                            <button className="btn-icon btn-ghost" onClick={() => setActiveChat(null)} style={{ marginRight: 8, display: 'none' }} className="mobile-only-back">
+                                ⬅️
+                            </button>
                             <div className="avatar" style={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, var(--primary), var(--accent))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
                                 {getOtherUser(activeChat).name?.charAt(0)}
                             </div>
@@ -140,6 +145,11 @@ export default function Chat() {
                     </div>
                 )}
             </div>
+            <style>{`
+                @media (max-width: 768px) {
+                    .mobile-only-back { display: inline-flex !important; }
+                }
+            `}</style>
         </div>
     );
 }

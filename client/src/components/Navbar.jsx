@@ -12,6 +12,7 @@ export default function Navbar() {
     const [notifications, setNotifications] = useState([]);
     const [showNotifs, setShowNotifs] = useState(false);
     const [unread, setUnread] = useState(0);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -59,28 +60,23 @@ export default function Navbar() {
                 <div className="nav-links">
                     {user ? (
                         <>
-                            <Link to="/feed" className={location.pathname === '/feed' ? 'active' : ''}>
-                                🔍 <span>Explore</span>
-                            </Link>
-                            {(user.role === 'donor' || user.role === 'ngo' || user.role === 'admin') && (
-                                <Link to="/create" className={location.pathname === '/create' ? 'active' : ''}>
-                                    ➕ <span>Share Food</span>
-                                </Link>
-                            )}
-                            <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>
-                                📊 <span>Dashboard</span>
-                            </Link>
-                            <Link to="/chat" className={location.pathname.startsWith('/chat') ? 'active' : ''}>
-                                💬 <span>Chat</span>
-                            </Link>
+                            {/* Desktop/Tablet Links */}
+                            <div className="nav-links-desktop">
+                                <Link to="/feed" className={location.pathname === '/feed' ? 'active' : ''}>🔍 Explore</Link>
+                                {(user.role === 'donor' || user.role === 'ngo' || user.role === 'admin') && (
+                                    <Link to="/create" className={location.pathname === '/create' ? 'active' : ''}>➕ Share</Link>
+                                )}
+                                <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>📊 Dash</Link>
+                                <Link to="/chat" className={location.pathname.startsWith('/chat') ? 'active' : ''}>💬 Chat</Link>
+                            </div>
+
+                            {/* Icons (Always Visible) */}
                             <div className="notif-bell" onClick={() => { setShowNotifs(!showNotifs); if (!showNotifs) markAllRead(); }}>
                                 🔔
                                 {unread > 0 && <span className="notif-count">{unread}</span>}
                                 {showNotifs && (
                                     <div className="notif-dropdown" onClick={e => e.stopPropagation()}>
-                                        <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border)', fontWeight: 700 }}>
-                                            Notifications
-                                        </div>
+                                        <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border)', fontWeight: 700 }}>Notifications</div>
                                         {notifications.length === 0 ? (
                                             <div style={{ padding: '24px', textAlign: 'center', color: 'var(--text-muted)' }}>No notifications yet</div>
                                         ) : notifications.slice(0, 10).map((n, i) => (
@@ -92,12 +88,36 @@ export default function Navbar() {
                                     </div>
                                 )}
                             </div>
-                            <Link to={`/profile/${user._id}`} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+
+                            <Link to={`/profile/${user._id}`}>
                                 <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(135deg, var(--primary), var(--accent))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>
                                     {user.name?.charAt(0)}
                                 </div>
                             </Link>
-                            <button className="btn-ghost btn-sm" onClick={() => { logout(); navigate('/'); }} style={{ cursor: 'pointer' }}>Logout</button>
+
+                            {/* Mobile Hamburger */}
+                            <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? '✕' : '☰'}
+                            </button>
+
+                            {/* Mobile Menu Overlay */}
+                            <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+                                <Link to="/feed" onClick={() => setIsMenuOpen(false)}>🔍 Explore</Link>
+                                {(user.role === 'donor' || user.role === 'ngo' || user.role === 'admin') && (
+                                    <Link to="/create" onClick={() => setIsMenuOpen(false)}>➕ Share Food</Link>
+                                )}
+                                <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>📊 Dashboard</Link>
+                                <Link to="/chat" onClick={() => setIsMenuOpen(false)}>💬 Chat</Link>
+                                <button className="btn btn-ghost" onClick={() => { logout(); navigate('/'); setIsMenuOpen(false); }} style={{ justifyContent: 'flex-start', color: 'var(--danger)' }}>
+                                    🚪 Logout
+                                </button>
+                                <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <span>Theme</span>
+                                    <button className="theme-toggle" onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
+                                        {theme === 'dark' ? '☀️' : '🌙'}
+                                    </button>
+                                </div>
+                            </div>
                         </>
                     ) : (
                         <>
@@ -106,7 +126,9 @@ export default function Navbar() {
                             <Link to="/register" className="btn btn-primary btn-sm">Get Started</Link>
                         </>
                     )}
-                    <button className="theme-toggle" onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
+
+                    {/* Desktop Theme Toggle (Hidden in Mobile Menu) */}
+                    <button className="theme-toggle" style={{ display: isMenuOpen ? 'none' : 'flex' }} onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
                         {theme === 'dark' ? '☀️' : '🌙'}
                     </button>
                 </div>
